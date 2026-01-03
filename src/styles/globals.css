@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Custom Properties */
+:root {
+  /* Colors - Festival Palette */
+  --color-primary-orange: #FF6B35;
+  --color-primary-orange-light: #FF8C5A;
+  --color-primary-orange-dark: #E55520;
+  
+  --color-primary-gold: #F7B731;
+  --color-primary-gold-light: #F9C856;
+  --color-primary-gold-dark: #E5A510;
+  
+  --color-primary-red: #EE5A6F;
+  --color-primary-red-light: #F27B8D;
+  --color-primary-red-dark: #DC3F55;
+  
+  /* Gradients */
+  --gradient-festival: linear-gradient(135deg, #FF6B35 0%, #F7B731 100%);
+  --gradient-diwali: linear-gradient(135deg, #FF6B35 0%, #EE5A6F 100%);
+  
+  /* Shadows */
+  --shadow-festival: 0 10px 40px -10px rgba(255, 107, 53, 0.3);
+  
+  /* Timing */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  
+  /* Easing */
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Base Styles */
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply antialiased text-neutral-900;
+    font-family: 'Inter', 'Noto Sans Telugu', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Prevent zoom on iOS inputs */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #D4D4D4;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #A3A3A3;
+  }
+}
+
+/* Component Utilities */
+@layer components {
+  /* Hide scrollbar but allow scrolling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Safe area for iOS */
+  .safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+  
+  .safe-area-inset-top {
+    padding-top: env(safe-area-inset-top, 0);
+  }
+  
+  /* Festival gradient text */
+  .text-gradient-festival {
+    background: var(--gradient-festival);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Festival button styles */
+  .btn-festival {
+    @apply bg-gradient-festival text-white font-semibold rounded-xl shadow-festival;
+    @apply hover:shadow-xl active:scale-95 transition-all duration-200;
+  }
+  
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-200;
+    @apply hover:shadow-lg hover:border-primary-orange;
+    @apply active:scale-[0.98];
+  }
+  
+  /* Input focus ring */
+  .input-focus {
+    @apply focus:border-primary-orange focus:outline-none;
+    @apply focus:ring-4 focus:ring-primary-orange/10;
+    @apply transition-all duration-200;
+  }
+}
+
+/* Utility Animations */
+@layer utilities {
+  .animate-in {
+    animation: fadeIn var(--duration-normal) var(--ease-out);
+  }
+  
+  .slide-up-in {
+    animation: slideUp var(--duration-normal) var(--ease-out);
+  }
+  
+  .slide-down-in {
+    animation: slideDown var(--duration-normal) var(--ease-out);
+  }
+  
+  .scale-in {
+    animation: scaleIn var(--duration-fast) var(--ease-out);
+  }
+}
